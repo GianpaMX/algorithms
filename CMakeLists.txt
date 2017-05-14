@@ -3,5 +3,5 @@ project(algorithms)
 
 set(CMAKE_C_STANDARD 99)
 
-set(SOURCE_FILES main.c insertion_sort.c)
+set(SOURCE_FILES main.c insertion_sort.c linear_search.c)
 add_executable(algorithms ${SOURCE_FILES})
