@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "insertion_sort.h"
+#include "selection_sort.h"
 
 static const int SIZE = 6;
 
@@ -10,7 +10,7 @@ int main() {
 
     print_array(array, SIZE);
 
-    insertion_sort(array, SIZE);
+    selection_sort(array, SIZE);
 
     print_array(array, SIZE);
 
