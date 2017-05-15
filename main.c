@@ -1,16 +1,13 @@
-#include "print_array.h"
-#include "merge_sort.h"
+#include <stdio.h>
+#include "maximun_subarray.h"
 
-static const int SIZE = 6;
+static const int SIZE = 16;
 
 int main() {
-    int array[] = {5, 2, 4, 6, 1, 3};
+    int array[] = {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
 
-    print_array(array, SIZE);
+    subarray result = maximun_subarray(array, 0, SIZE - 1);
 
-    merge_sort(array, SIZE);
-
-    print_array(array, SIZE);
-
+    printf("{low = %d, high = %d, sum = %d}", result.low, result.high, result.sum);
     return 0;
 }
