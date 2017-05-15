@@ -37,6 +37,7 @@ subarray maximun_crossing_subarray(const int *array, int low, int mid, int high)
 
     return result;
 }
+
 /**
  * if we split the array in two the maximun sum should be on the left side, on the right side or accross the division
  * point. If we continue to splitting until have one-element array, that array is the maximun sum, then we pop back
@@ -69,3 +70,20 @@ subarray maximun_subarray(const int *array, int low, int high) {
         return crossing;
     }
 }
+
+/*
+ * Brute-force implementation
+subarray maximun_subarray(const int *array, int low, int high) {
+    subarray result;
+
+    result.sum = INT_MIN;
+    for (int i = 0; i <= high; i++) {
+        subarray crossing = maximun_crossing_subarray(array, low, i, high);
+        if (crossing.sum > result.sum) {
+            result = crossing;
+        }
+    }
+
+    return result;
+}
+*/
