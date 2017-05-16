@@ -1,19 +1,17 @@
-
-#include "merge_buffer.h"
+#include <stdio.h>
 #include "print_array.h"
+#include "non_zero.h"
 
 
 int main() {
-    int P[] = {1, 5, 10, 20, 30, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    int S[] = {3, 8, 25, 35, 45, 55, 65, 75};
+    int array[] = {1, 0, 2, 0, 0, 3, 0};
 
-    print_array(P, 18);
-    print_array(S, 8);
+    print_array(array, 7);
 
-    merge_buffer(P, 6, S, 8);
+    int non_zeros = non_zero(array, 7);
 
-    print_array(P, 18);
-    print_array(S, 8);
+    printf("%d\n", non_zeros);
+    print_array(array, 7);
 
     return 0;
 }
