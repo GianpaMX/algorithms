@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "print_array.h"
+#include <print_array.h>
+
 #include "has_sum.h"
 
 
