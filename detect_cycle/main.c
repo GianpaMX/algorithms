@@ -1,6 +1,6 @@
 #include <stdio.h>
+#include <list_node.h>
 
-#include "list_node.h"
 #include "detect_cycle.h"
 
 int main() {
