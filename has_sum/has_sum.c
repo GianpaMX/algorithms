@@ -1,61 +1,71 @@
 #include <malloc.h>
 #include <stdbool.h>
+#include <linear_search.h>
+
 #include "has_sum.h"
 
-int index_of(int *array, int size, int value);
+int index_of(int value, int *array, int size);
 
 /**
- * You have an array with N elements and you should find two elements with given sum K
+ * The sum of two numbers equals K is:
+ * a + b = K
+ * We can rewrite the equation like:
+ * b = K - a
+ * That means that if we already know the difference we know the value of b
+ *
+ * So we will iterate the array saving the possible b that we need to find and then
+ * when we iterate we check if the current item is that b that we are looking for
+ *
+ * Time and Space complexity O(n)
  *
  * @param input
  * @param input_size
  * @param k
  * @return
  */
-bool has_sum(int *input, int input_size, int k) {
+bool has_sum(const int *input, int input_size, int k) {
     int *differences = malloc(input_size * sizeof(int));
-    int differences_size = 0;
+    bool result = false;
 
     for (int i = 0; i < input_size; i++) {
-        if (index_of(differences, differences_size, input[i]) >= 0) {
-            free(differences);
-            return true;
+        if (index_of(input[i], differences, i) >= 0) {
+            result = true;
+            break;
         }
 
-        differences[differences_size++] = k - input[i];
+        differences[i] = k - input[i];
     }
 
     free(differences);
-    return false;
+    return result;
 }
 
-void has_sum_numbers(int *input, int input_size, int k, int *result) {
-    int *numbers = malloc(input_size * sizeof(int));
+/**
+ * To return the numbers we just find the number at the same position in the input array since the
+ * differences array is one-to-one with the input array
+ *
+ * @param input
+ * @param input_size
+ * @param k
+ * @param result
+ */
+void has_sum_numbers(const int *input, int input_size, int k, int *result) {
     int *differences = malloc(input_size * sizeof(int));
-    int differences_size = 0;
-    int index;
 
     for (int i = 0; i < input_size; i++) {
-        index = index_of(differences, differences_size, input[i]);
+        int index = index_of(input[i], differences, i);
         if (index >= 0) {
-            result[0] = numbers[index];
+            result[0] = input[index];
             result[1] = input[i];
             break;
         }
 
-        numbers[differences_size] = input[i];
-        differences[differences_size] = k - input[i];
-        differences_size++;
+        differences[i] = k - input[i];
     }
 
-    free(numbers);
     free(differences);
 }
 
-int index_of(int *array, int size, int value) {
-    for (int i = 0; i < size; i++) {
-        if (array[i] == value) return i;
-    }
-    return -1;
+int index_of(int value, int *array, int size) {
+    return linear_search(value, array, size);
 }
-
