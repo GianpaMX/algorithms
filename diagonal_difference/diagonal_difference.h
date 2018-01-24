@@ -1,0 +1,6 @@
+#ifndef ALGORITHMS_DIAGONAL_DIFFERENCE_H
+#define ALGORITHMS_DIAGONAL_DIFFERENCE_H
+
+int diagonal_difference(int n, int **a);
+
+#endif //ALGORITHMS_DIAGONAL_DIFFERENCE_H
