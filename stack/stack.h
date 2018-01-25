@@ -21,7 +21,7 @@ struct stack {
     int (*size)(const stack *s);
 };
 
-stack stack_init(size_t size);
+stack *stack_init(size_t size);
 
 void stack_free(stack *s);
 

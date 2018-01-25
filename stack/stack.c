@@ -44,16 +44,16 @@ int size(const stack *s) {
     return counter;
 }
 
-stack stack_init(size_t value_size) {
-    stack s;
+stack *stack_init(size_t value_size) {
+    stack *s = malloc(sizeof(stack));
 
-    s.value_size = value_size;
-    s.node = NULL;
+    s->value_size = value_size;
+    s->node = NULL;
 
-    s.push = &push;
-    s.pop = &pop;
-    s.peek = &peek;
-    s.size = &size;
+    s->push = &push;
+    s->pop = &pop;
+    s->peek = &peek;
+    s->size = &size;
 
     return s;
 }
@@ -70,5 +70,5 @@ void stack_free(stack *s) {
         node = parent;
     }
 
-    s->node = NULL;
+    free(s);
 }
