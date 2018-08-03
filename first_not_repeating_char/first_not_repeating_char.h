@@ -1,0 +1,8 @@
+#ifndef ALGORITHMS_FIRST_NOT_REPEATING_CHAR_H
+#define ALGORITHMS_FIRST_NOT_REPEATING_CHAR_H
+
+
+char first_not_repeating_char(char *s);
+
+
+#endif //ALGORITHMS_FIRST_NOT_REPEATING_CHAR_H

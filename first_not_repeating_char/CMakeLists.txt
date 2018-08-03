@@ -1,0 +1,1 @@
+add_executable(first_not_repeating main.c first_not_repeating_char.c)
