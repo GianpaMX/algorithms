@@ -5,7 +5,7 @@
 bool is_balanced(const char *sequence) {
     stack *s = stack_init(sizeof(char));
 
-    char *c = sequence;
+    const char *c = sequence;
     do {
         if (*c == '(' || *c == '[') {
             s->push(s, c);
