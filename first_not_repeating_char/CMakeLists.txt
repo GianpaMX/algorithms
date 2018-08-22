@@ -1,1 +1,2 @@
 add_executable(first_not_repeating main.c first_not_repeating_char.c)
+target_link_libraries(first_not_repeating LINK_PUBLIC btree)
