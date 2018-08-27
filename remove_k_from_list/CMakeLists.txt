@@ -1,0 +1,2 @@
+add_executable(remove_k_from_list main.c remove_k_from_list.c)
+target_link_libraries(remove_k_from_list LINK_PUBLIC list_node)
