@@ -1,0 +1,2 @@
+add_executable(add_two_huge_numbers main.c add_two_huge_numbers.c)
+target_link_libraries(add_two_huge_numbers LINK_PUBLIC list_node stack)
