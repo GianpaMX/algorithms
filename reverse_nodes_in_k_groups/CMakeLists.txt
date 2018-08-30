@@ -1,0 +1,2 @@
+add_executable(reverse_nodes_in_k_groups main.c reverse_nodes_in_k_groups.c)
+target_link_libraries(reverse_nodes_in_k_groups LINK_PUBLIC list_node)
