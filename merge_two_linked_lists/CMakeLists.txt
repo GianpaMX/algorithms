@@ -1,0 +1,2 @@
+add_executable(merge_two_linked_lists main.c merge_two_linked_lists.c)
+target_link_libraries(merge_two_linked_lists LINK_PUBLIC list_node)
