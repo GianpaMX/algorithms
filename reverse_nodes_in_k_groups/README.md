@@ -1,49 +1,50 @@
-Merge Two Linked Lists
-======================
+Reverse Nodes In K Groups
+=========================
 
-Note: Your solution should have `O(l1.length + l2.length)` time
-complexity, since this is what you will be asked to accomplish in an
-interview.
+Note: Your solution should have `O(n)` time complexity, where `n` is
+the number of element in `l`, and `O(1)` additional space complexity,
+since this is what you would be asked to accomplish in an interview.
 
-Given two singly linked lists sorted in non-decreasing order, your task
-is to merge them. In other words, return a singly linked list, also
-sorted in non-decreasing order, that contains the elements from both
-original lists.
+Given a linked list `l`, reverse its nodes `k` at a time and return the
+modified list. `k` is a positive integer that is less than or equal to
+the length of `l`. If the number of nodes in the linked list is not a
+multiple of `k`, then the nodes that are left out at the end should
+remain as-is.
+
+You may not alter the values in the nodes - only the nodes themselves
+can be changed.
 
 #### Example
 
-* For `l1 = [1, 2, 3]` and `l2 = [4, 5, 6]`, the output should be
-
-  `mergeTwoLinkedLists(l1, l2) = [1, 2, 3, 4, 5, 6]`;
-
-* For `l1 = [1, 1, 2, 4]` and `l2 = [0, 3, 5]`, the output should be
-  `mergeTwoLinkedLists(l1, l2) = [0, 1, 1, 2, 3, 4, 5]`.
+* For `l = [1, 2, 3, 4, 5]` and `k = 2`, the output should be
+  `reverseNodesInKGroups(l, k) = [2, 1, 4, 3, 5]`;
+* For `l = [1, 2, 3, 4, 5]` and `k = 1`, the output should be
+  `reverseNodesInKGroups(l, k) = [1, 2, 3, 4, 5]`;
+* For `l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]` and `k = 3`, the output
+  should be
+  `reverseNodesInKGroups(l, k) = [3, 2, 1, 6, 5, 4, 9, 8, 7, 10, 11]`.
 
 #### Input/Output
 
 * \[execution time limit\] 0.5 seconds (c)
 
-* \[input\] linkedlist.integer l1
+* \[input\] linkedlist.integer l
 
-    A singly linked list of integers.
+  A singly linked list of integers.
 
-    Guaranteed constraints:
+  Guaranteed constraints:
 
-    `0 ≤ list size ≤ 104`,
+  `1 ≤ list size ≤ 104`,
 
-    `-109 ≤ element value ≤ 109`.
+  `-109 ≤ element value ≤ 109`.
 
-* \[input\] linkedlist.integer l2
+* \[input\] integer `k`
 
-    A singly linked list of integers.
+  The size of the groups of nodes that need to be reversed.
 
-    Guaranteed constraints:
+  Guaranteed constraints:
 
-    `0 ≤ list size ≤ 104`,
-
-    `-109 ≤ element value ≤ 109`.
+  `1 ≤ k ≤ l size`.
 
 * \[output\] linkedlist.integer
-
-    A list that contains elements from both `l1` and `l2`, sorted in
-    non-decreasing order.
+  The initial list, with reversed groups of k elements.

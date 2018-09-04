@@ -8,9 +8,9 @@ int main() {
     list1->next->next->next = list_node_new(4);
     list1->next->next->next->next = list_node_new(5);
 
-    reverse_nodes_in_k_groups(list1, 3);
-
     list_node_print(list1);
+    list_node *k_reversed = reverse_nodes_in_k_groups(list1, 1);
+    list_node_print(k_reversed);
 
     return 0;
 }
