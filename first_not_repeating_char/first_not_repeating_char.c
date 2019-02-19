@@ -1,41 +1,45 @@
-#include <memory.h>
+#include <string.h>
 #include "first_not_repeating_char.h"
 
+static const int ALPHABET_SIZE = 26;
+
 /**
- * Removes duplicates in-place. With teo pointers, i is pointing to our reference char,
- * j is looking duplicates. When it finds one, it replaces with a space char and continue
- * looking up to the end of the array.
- * Then move the char reference until the next valid char and look for duplicates again.
+ * This solution iterates over the string once and uses O(1) additional memory.
  *
- * When j reaches the end of the array and there were no duplicates; return chat at i
+ * Since we are only receiving chars from 'a' to 'z', we declare an array for
+ * counting instances of each character in the alphabet. We also save first position
+ * in the string.
  *
- * Special case when length is 1, no room for duplicates
+ * By the end we just iterate over the positions array searching for the smallest one.
  *
  * @param s
  * @return
  */
 char first_not_repeating_char(char *s) {
-    int i = 0;
-    int j = 1;
+    char instances[ALPHABET_SIZE];
+    int positions[ALPHABET_SIZE];
 
-    int duplicates = 0;
+    int s_len = (int) strlen(s);
 
-    size_t length = strlen(s);
-    while (i < length && j < length) {
-        if (s[i] == s[j]) {
-            s[j] = ' ';
-            duplicates++;
-        }
+    for (int i = 0; i < ALPHABET_SIZE; i++) {
+        instances[i] = 0;
+        positions[i] = s_len;
+    }
 
-        if (++j >= length) {
-            if (duplicates == 0) {
-                return s[i];
-            }
-            do {
-                j = ++i + 1;
-            } while (i < length && s[i] == ' ');
-            duplicates = 0;
+    for (int i = 0; i < s_len; i++) {
+        int index = s[i] - 97;  // ASCII for 'a'
+        instances[index] += 1;
+        if (i < positions[index]) {
+            positions[index] = i;
         }
     }
-    return length == 1 ? s[0] : '_';
+
+    int first_no_repeating = s_len;
+    for (int i = 0; i < ALPHABET_SIZE; i++) {
+        if (instances[i] == 1 && positions[i] < first_no_repeating) {
+            first_no_repeating = positions[i];
+        }
+    }
+
+    return first_no_repeating == s_len ? '_' : s[first_no_repeating];
 }
