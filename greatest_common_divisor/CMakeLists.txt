@@ -1,0 +1,2 @@
+add_library(greatest_common_divisor greatest_common_divisor.c)
+target_include_directories(greatest_common_divisor PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

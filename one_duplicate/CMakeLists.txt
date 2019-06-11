@@ -1,0 +1,2 @@
+add_executable(one_duplicate main.c one_duplicate.c)
+target_link_libraries(one_duplicate LINK_PUBLIC factorial greatest_common_divisor)

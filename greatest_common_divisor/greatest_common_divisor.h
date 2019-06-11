@@ -1,0 +1,8 @@
+#ifndef ALGORITHMS_GREATEST_COMMON_DIVISOR_H
+#define ALGORITHMS_GREATEST_COMMON_DIVISOR_H
+
+
+int greatest_common_divisor(int a, int b);
+
+
+#endif //ALGORITHMS_GREATEST_COMMON_DIVISOR_H
