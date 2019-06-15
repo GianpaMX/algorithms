@@ -1,0 +1,1 @@
+add_executable(substring_permutations main.c substring_permutations.c)
