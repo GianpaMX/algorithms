@@ -5,23 +5,24 @@
 
 typedef struct Heap Heap;
 
-typedef int (*heap_cmp)(const int *a, const int *b);
+typedef int (*heap_cmp)(const void *a, const void *b);
 
 struct Heap {
-    int *array;
+    size_t t;
+    void *array;
     int size;
     size_t max_size;
 
-    int (*peek)(const Heap *heap);
+    const void *(*peek)(const Heap *heap);
 
-    void (*push)(Heap *heap, int n);
+    void (*push)(Heap *heap, const void *n);
 
-    int (*pop)(Heap *heap);
+    const void *(*pop)(Heap *heap);
 
     heap_cmp cmp;
 };
 
-Heap *new_heap(int height, heap_cmp heap_cmp);
+Heap *new_heap(int height, size_t t, heap_cmp heap_cmp);
 
 void free_heap(Heap *heap);
 

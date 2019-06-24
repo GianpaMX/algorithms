@@ -2,15 +2,14 @@
 #include <stdio.h>
 #include "heap.h"
 
-int intcmp(const int *a, const int *b);
+int intcmp(const void *a, const void *b);
 
 int main() {
-    Heap *heap = new_heap(3, intcmp);
+    Heap *heap = new_heap(3, sizeof(int), intcmp);
 
-    heap->push(heap, 40);
-    heap->push(heap, 30);
-    heap->push(heap, 20);
-    heap->push(heap, 10);
+    for (int i = 40; i > 0; i -= 10) {
+        heap->push(heap, &i);
+    }
 
     print_array(heap->array, heap->max_size);
 
@@ -25,6 +24,6 @@ int main() {
     return 0;
 }
 
-int intcmp(const int *a, const int *b) {
-    return *b - *a;
+int intcmp(const void *a, const void *b) {
+    return *(int *) b - *(int *) a;
 }
