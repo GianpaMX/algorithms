@@ -19,7 +19,7 @@ int heap_right_child(int i);
 
 int heap_left_child(int i);
 
-Heap *new_heap(int height) {
+Heap *new_heap(int height, heap_cmp heap_cmp) {
     if (height == 0) return NULL;
 
     Heap *heap = malloc(sizeof(Heap));
@@ -29,6 +29,8 @@ Heap *new_heap(int height) {
     heap->peek = &heap_peek;
     heap->push = &heap_push;
     heap->pop = &heap_pop;
+
+    heap->cmp = heap_cmp;
 }
 
 void free_heap(Heap *heap) {
@@ -58,7 +60,7 @@ void heap_sift_up(Heap *heap, int i) {
     if (i == 0) return;
 
     int parent = heap_parent(i);
-    if (heap->array[parent] > heap->array[i]) {
+    if (heap->cmp(heap->array + parent, heap->array + i) > 0) {
         swap(heap->array + parent, heap->array + i);
         heap_sift_up(heap, parent);
     }
@@ -70,13 +72,13 @@ void heap_sift_down(Heap *heap, int i) {
 
     if (left_child >= heap->size || right_child >= heap->size) return;
 
-    if (heap->array[left_child] < heap->array[right_child]) {
-        if (heap->array[i] > heap->array[left_child]) {
+    if (heap->cmp(heap->array + left_child, heap->array + right_child) < 0) {
+        if (heap->cmp(heap->array + i, heap->array + left_child) > 0) {
             swap(heap->array + i, heap->array + left_child);
             heap_sift_down(heap, left_child);
         }
     } else {
-        if (heap->array[i] > heap->array[right_child]) {
+        if (heap->cmp(heap->array + i, heap->array + right_child) > 0) {
             swap(heap->array + i, heap->array + right_child);
             heap_sift_down(heap, right_child);
         }

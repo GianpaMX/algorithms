@@ -2,8 +2,10 @@
 #include <stdio.h>
 #include "heap.h"
 
+int intcmp(const int *a, const int *b);
+
 int main() {
-    Heap *heap = new_heap(3);
+    Heap *heap = new_heap(3, intcmp);
 
     heap->push(heap, 40);
     heap->push(heap, 30);
@@ -21,4 +23,8 @@ int main() {
 
     free_heap(heap);
     return 0;
+}
+
+int intcmp(const int *a, const int *b) {
+    return *b - *a;
 }

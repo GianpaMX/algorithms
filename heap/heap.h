@@ -5,6 +5,8 @@
 
 typedef struct Heap Heap;
 
+typedef int (*heap_cmp)(const int *a, const int *b);
+
 struct Heap {
     int *array;
     int size;
@@ -15,9 +17,11 @@ struct Heap {
     void (*push)(Heap *heap, int n);
 
     int (*pop)(Heap *heap);
+
+    heap_cmp cmp;
 };
 
-Heap *new_heap(int height);
+Heap *new_heap(int height, heap_cmp heap_cmp);
 
 void free_heap(Heap *heap);
 
